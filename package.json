@@ -1,0 +1,11 @@
+{
+  "name": "webgameproject",
+  "version": "1.0.0",
+  "description": "I had alot of work done but realizied i failed to open th repository and was coding within the NCSTATEFolder.",
+  "main": "main.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC"
+}
