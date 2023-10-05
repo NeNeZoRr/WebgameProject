@@ -144,8 +144,6 @@ body {
 
 /* Media Query for Smaller Screens */
 @media screen and (max-width: 470px) {
-}
-
     .container h2 {
         font-size: 1.375em;
         padding: 0.8125em 1.25em;
@@ -181,3 +179,4 @@ body {
         font-size: 1.25em;
         margin-top: 0.5em;
     }
+}
