@@ -25,7 +25,7 @@ body {
     box-shadow: 2px 20px 30px rgba(0, 0, 0, 0.08);
     margin-top: 2em;
     margin-bottom: 1em;
-    text-align: center;/
+    text-align: center;
 }
 
 .container h2 {
@@ -141,7 +141,6 @@ body {
     justify-content: flex-start;
     align-items: center;
 }
-
 
 /* Media Query for Smaller Screens */
 @media screen and (max-width: 470px) {
