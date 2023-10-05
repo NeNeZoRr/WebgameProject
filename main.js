@@ -1,14 +1,33 @@
-// DOM elements
 const wordText = document.querySelector(".word");
 const hintText = document.querySelector(".hint span");
 const timeText = document.querySelector(".time b");
 const inputField = document.querySelector("input");
-const refreshBtn = document.querySelector(".new-word"); // Updated class name
-const checkBtn = document.querySelector(".verify-word"); // Updated class name
+const refreshBtn = document.querySelector(".new-word");
+const checkBtn = document.querySelector(".verify-word");
 const timerDisplay = document.getElementById("timer");
+const startButton = document.getElementById("start-button");
 
-let correctWord, timer;
+let correctWord, timer, gameStarted = false;
 
+// Function to start the game and timer
+function startGame() {
+    if (gameStarted) return;
+    gameStarted = true;
+
+    startButton.style.display = "none";
+
+
+    document.getElementById("word-input").style.display = "block";
+    document.querySelector(".new-word").style.display = "block";
+    document.querySelector(".verify-word").style.display = "block";
+
+    initTimer(30);
+}
+
+
+startButton.addEventListener("click", startGame);
+
+// Function to initialize the timer
 const initTimer = maxTime => {
     clearInterval(timer);
     timer = setInterval(() => {
@@ -23,6 +42,7 @@ const initTimer = maxTime => {
     }, 1000);
 };
 
+// Function to update the timer display
 const updateTimerDisplay = remainingTime => {
     const minutes = Math.floor(remainingTime / 60);
     const seconds = remainingTime % 60;
@@ -30,8 +50,12 @@ const updateTimerDisplay = remainingTime => {
     timerDisplay.innerText = formattedTime;
 };
 
+// Function to initialize the game
 const initGame = () => {
-    initTimer(30);
+    gameStarted = false;
+    startButton.style.display = "block";
+    startButton.innerText = "Start";
+    initTimer(0);
     let randomObj = wordArray[Math.floor(Math.random() * wordArray.length)];
     let wordArrayShuffled = randomObj.word.split("");
     for (let i = wordArrayShuffled.length - 1; i > 0; i--) {
@@ -45,15 +69,19 @@ const initGame = () => {
     inputField.setAttribute("maxlength", correctWord.length);
 };
 
+// Function to check the entered word
 const checkWord = () => {
     let userWord = inputField.value.toLowerCase();
     if (!userWord) return alert("Please enter the word to check!");
-    if (userWord !== correctWord) return alert(`Oops! ${userWord} is not a correct word`);
+    if (userWord !== correctWord) return alert(`Oops! ${userWord} is not the correct word`);
     clearInterval(timer);
     alert(`Congrats! ${correctWord.toUpperCase()} is the correct word`);
     initGame();
 };
 
+
 refreshBtn.addEventListener("click", initGame);
 checkBtn.addEventListener("click", checkWord);
+
+
 initGame();
