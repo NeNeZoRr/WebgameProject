@@ -2,7 +2,7 @@
 const wordArray = [
     {
         word: "apple",
-        hint: "A fruit"
+        hint: "A red fruit"
     },
     {
         word: "banana",
