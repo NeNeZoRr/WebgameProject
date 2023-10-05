@@ -29,7 +29,7 @@ const updateTimerDisplay = remainingTime => {
 };
 
 const initGame = (words, wordText, hintText, correctWord, inputField) => {
-    let randomObj = words[Math.floor(Math.random() * words.length)];
+    let randomObj = words[Math.floor(Math.random() * word.length)];
     let wordArrayShuffled = randomObj.word.split("");
     for (let i = wordArrayShuffled.length - 1; i > 0; i--) {
         let j = Math.floor(Math.random() * (i + 1));
@@ -42,6 +42,7 @@ const initGame = (words, wordText, hintText, correctWord, inputField) => {
     inputField.setAttribute("maxlength", correctWord.length);
     initTimer(30);
 };
+console.log("wordArray length:", wordArray.length);
 
 const checkWord = () => {
     let userWord = inputField.value.toLowerCase();
@@ -54,6 +55,5 @@ const checkWord = () => {
 
 refreshBtn.addEventListener("click", initGame);
 checkBtn.addEventListener("click", checkWord);
-
 
 initGame();

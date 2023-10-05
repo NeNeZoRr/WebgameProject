@@ -1,3 +1,4 @@
+
 const wordArray = [
     {
         word: "apple",
@@ -8,3 +9,4 @@ const wordArray = [
         hint: "A yellow fruit"
     },
 ];
+
