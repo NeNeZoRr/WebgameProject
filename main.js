@@ -1,4 +1,4 @@
-// Import the wordArray from word.js
+// wordArray from word.js
 import wordArray from './word.js';
 
 // DOM elements
