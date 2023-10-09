@@ -37,13 +37,14 @@ body {
 }
 
 .container h2 {
+    color: #e6b800;
     font-size: 2.5em;
     font-weight: 500;
     padding: 1em 1.5em;
     text-align: center;
     border-bottom: 1px solid black;
     width: 100%;
-    margin-top: 1em;
+    margin-top: 0.2em;
 }
 
 /* Logo styling */

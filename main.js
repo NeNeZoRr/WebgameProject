@@ -66,22 +66,22 @@ const initGame = () => {
     gameStarted = false;
     score = 0;
     scoreCounter.innerText = score;
-    gameTimerDisplay.style.display = "none"; // Hide the game timer
+    gameTimerDisplay.style.display = "none"; 
 };
 
 // Event listener for the "New Word" button
 refreshBtn.addEventListener("click", () => {
-    inputField.value = ""; // Clear the input field
+    inputField.value = ""; 
     initGame();
     generateWord(); // Generate a new word
-    initGameTimer(180); // 180 seconds = 3 minutes
+    initGameTimer(180); 
     gameStarted = true;
 });
 
 // Event listener for the "Verify Word" button
 checkBtn.addEventListener("click", () => {
     let userWord = inputField.value.toLowerCase();
-    inputField.value = ""; // Clear the input field
+    inputField.value = ""; 
     if (!userWord) {
         alert("Please enter the word to check!");
         return;
