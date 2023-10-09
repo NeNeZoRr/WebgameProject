@@ -15,7 +15,8 @@
 
 <body>
     <div class="container">
-        <h2>WordWhiz Challenge</h2>
+        <img src="Assets/GameLogo.png" alt="Game Logo" class="logo">
+        <h2>Pharaoh's Puzzle Challenge</h2>
         <div class="content">
             <p class="word"></p>
             <div class="details">
@@ -34,26 +35,26 @@
     <div class="score">
         Score: <span id="score-counter">0</span>
     </div>
-
-    <button class="instructions-btn">Game Instructions</button>
-    <div class="modal">
-        <div class="modal-content">
-            <span class="close-btn">&times;</span>
-            <h3>Instructions</h3>
-            <ul>
-                <li>Earn 1 point per correct word</li>
-                <li>Lose 1 point per incorrect word</li>
-                <li>Timer for 3 minutes</li>
-                <li>+15 points under or at 3 minutes = Winner</li>
-                <li>Less than 15 points under 3 minutes = Loser</li>
-            </ul>
-        </div>
+</div>
+<button class="instructions-btn">Game Instructions</button>
+<div class="modal">
+    <div class="modal-content">
+        <span class="close-btn">&times;</span>
+        <h3>Instructions</h3>
+        <ul class="instruct-list">
+            <li>Earn 1 point per correct word</li>
+            <li>Lose 1 point per incorrect word</li>
+            <li>Timer for 3 minutes</li>
+            <li>15 points under 3 minutes = Winner</li>
+            <li>Less than 15 points under 3 minutes = Loser</li>
+        </ul>
     </div>
+</div>
 
     <script src="https://code.jquery.com/jquery-3.4.1.min.js"
         integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
-    <script type="module" src="main.js" defer></script>
     <script type="module" src="word.js" defer></script>
+    <script type="module" src="main.js" defer></script>
 </body>
 
 </html>

@@ -9,13 +9,18 @@
 
 /* Body */
 body {
+    background-image: url('Assets/NewEgypt.png');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-position: center;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
     min-height: 100vh;
-    background: #f5f5f5;
     margin: 0;
+    font-family: 'Audiowide';
 }
 
 /* Container */
@@ -23,8 +28,9 @@ body {
     width: 90%;
     max-width: 800px;
     border-radius: 7px;
-    background: #c8e7f2;
-    box-shadow: 2px 20px 30px rgba(0, 0, 0, 0.08);
+    background: #006559;
+    color: black;
+    box-shadow: 10px 20px 30px rgba(0, 0, 0, 0.08);
     margin-top: 2em;
     margin-bottom: 1em;
     text-align: center;
@@ -38,6 +44,14 @@ body {
     border-bottom: 1px solid black;
     width: 100%;
     margin-top: 1em;
+}
+
+/* Logo styling */
+.logo {
+    margin-top: 30px;
+    width: 400px;
+    height: 300px;
+    margin-right: 10px;
 }
 
 .container .content {
@@ -70,25 +84,27 @@ body {
 }
 
 .content input {
+    text-align: center;
     width: 100%;
     height: 3.75em;
     outline: none;
     padding: 0 1em;
     font-size: 1.125em;
     border-radius: 5px;
-    border: 1px solid #bfbfbf;
+    border: 1px solid black;
+    background-color: black;
 }
 
 .content input:focus {
-    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.08);
+    box-shadow: 10px 2px 4px rgba(0, 0, 0, 0.08);
 }
 
 .content input::placeholder {
-    color: #aaa;
+    color: #e6b800;
 }
 
 .content input:focus::placeholder {
-    color: #bfbfbf;
+    color: #e6b800;
 }
 
 /* Buttons */
@@ -101,7 +117,6 @@ body {
 .buttons button {
     border: none;
     outline: none;
-    color: white;
     cursor: pointer;
     padding: 0.9375em 0;
     font-size: 1.375em;
@@ -115,15 +130,17 @@ body {
 }
 
 .buttons .new-word {
-    background: rgb(161, 159, 159);
+    background: #900030;
+    color: white;
 }
 
 .buttons .new-word:hover {
-    background: #5f666d;
+    background: #90003060;
 }
 
 .buttons .verify-word {
-    background: #5372F0;
+    background: #00dcca;
+    color: black;
 }
 
 .buttons .verify-word:hover {
@@ -132,8 +149,8 @@ body {
 
 /* Game Timer Styling */
 #game-timer {
-    background: #e2e1e1;
-    color: rgb(0, 0, 0);
+    background: black;
+    color: #e6b800;
     padding: 10px 20px;
     font-size: 1.5em;
     border-radius: 5px;
@@ -146,8 +163,8 @@ body {
     position: absolute;
     top: 10px;
     right: 10px;
-    background-color: rgb(204, 202, 202);
-    color: #000000;
+    background-color: black;
+    color: #e6b800;
     padding: 10px 50px;
     border-radius: 5px;
     font-size: 1.2em;
@@ -173,17 +190,9 @@ body {
 }
 
 .modal-content {
-    background-color: #fefefe;
+    background-color: black;
     margin: 10% auto;
     padding: 20px;
-    border: 1px solid #888;
-    width: 80%;
-    border-radius: 10px;
-}
-
-.close-btn {
-    color: #888;
-    float: right;
     font-size: 28px;
     font-weight: bold;
     cursor: pointer;
@@ -202,8 +211,8 @@ body {
     font-family: 'Audiowide';
     top: 10px;
     left: 10px;
-    background-color: #5372F0;
-    color: white;
+    background-color: black;
+    color: #e6b800;
     padding: 10px 20px;
     border-radius: 5px;
     font-weight: bold;
@@ -219,8 +228,16 @@ body {
     align-items: center;
     text-align: center;
     font-size: 1.5em;
-    margin-top: auto;
+    margin-top: 10px 30px 10px 30px;
     padding: auto;
+    color: #e6b800;
+    background-color: #000;
+}
+
+.instruct-list {
+    color: #e6b800;
+    font-size: 0.6em;
+    margin-left: 200px;
 }
 
 /* Media Query for Smaller Screens */
@@ -260,8 +277,9 @@ body {
         font-size: 1.25em;
         margin-top: 0.5em;
     }
+
     .modal-content {
-        width: 95%;
+        width: 90%;
     }
 
     .instructions {
