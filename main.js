@@ -30,7 +30,7 @@ const generateWord = () => {
     correctWord = randomObj.word.toLowerCase();
 };
 
-// Timer function
+// Timer function and score function
 const initGameTimer = maxTime => {
     clearInterval(gameTimer);
     gameTimerDisplay.style.display = "block";
@@ -58,7 +58,7 @@ const updateGameTimerDisplay = remainingTime => {
     gameTimerDisplay.innerText = formattedTime;
 };
 
-// Function to initialize the game
+// Function to initialize the game and score
 const initGame = () => {
     wordText.innerText = "";
     hintText.innerText = "";
@@ -103,12 +103,12 @@ instructionsBtn.addEventListener("click", () => {
     modal.style.display = "block";
 });
 
-// Event listener for the close button in the modal
+// Event listener for the close button in the instruction pop up
 closeBtn.addEventListener("click", () => {
     modal.style.display = "none";
 });
 
-// Event listener to close the modal if the user clicks outside of it
+// Event listener to close the instructions tab if the user clicks outside of it
 window.addEventListener("click", (event) => {
     if (event.target === modal) {
         modal.style.display = "none";
