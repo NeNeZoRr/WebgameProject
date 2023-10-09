@@ -9,10 +9,26 @@ const inputField = document.querySelector("input");
 const refreshBtn = document.querySelector(".new-word");
 const checkBtn = document.querySelector(".verify-word");
 const scoreCounter = document.getElementById("score-counter");
+const instructionsBtn = document.querySelector(".instructions-btn");
+const modal = document.querySelector(".modal");
+const closeBtn = document.querySelector(".close-btn");
 
 // Game Initialization variables
 let correctWord, gameTimer, gameStarted = false;
 let score = 0;
+
+// Function to generate a new word
+const generateWord = () => {
+    let randomObj = wordArray[Math.floor(Math.random() * wordArray.length)];
+    let wordArrayShuffled = randomObj.word.split("");
+    for (let i = wordArrayShuffled.length - 1; i > 0; i--) {
+        let j = Math.floor(Math.random() * (i + 1));
+        [wordArrayShuffled[i], wordArrayShuffled[j]] = [wordArrayShuffled[j], wordArrayShuffled[i]];
+    }
+    wordText.innerText = wordArrayShuffled.join("");
+    hintText.innerText = randomObj.hint;
+    correctWord = randomObj.word.toLowerCase();
+};
 
 // Timer function
 const initGameTimer = maxTime => {
@@ -46,49 +62,55 @@ const updateGameTimerDisplay = remainingTime => {
 const initGame = () => {
     wordText.innerText = "";
     hintText.innerText = "";
-    inputField.value = "";
+    inputField.value = ""; // Clear the input field
     gameStarted = false;
     score = 0;
     scoreCounter.innerText = score;
+    gameTimerDisplay.style.display = "none"; 
 };
 
 // Event listener for the "New Word" button
 refreshBtn.addEventListener("click", () => {
+    inputField.value = ""; 
     initGame();
-    initGameTimer(180); // 180 seconds = 3 minutes
+    generateWord(); // Generate a new word
+    initGameTimer(180); 
     gameStarted = true;
-    generateWord();
 });
-
-// Generate a new word function
-const generateWord = () => {
-    let randomObj = wordArray[Math.floor(Math.random() * wordArray.length)];
-    let wordArrayShuffled = randomObj.word.split("");
-    for (let i = wordArrayShuffled.length - 1; i > 0; i--) {
-        let j = Math.floor(Math.random() * (i + 1));
-        [wordArrayShuffled[i], wordArrayShuffled[j]] = [wordArrayShuffled[j], wordArrayShuffled[i]];
-    }
-    wordText.innerText = wordArrayShuffled.join("");
-    hintText.innerText = randomObj.hint;
-    correctWord = randomObj.word.toLowerCase();
-};
 
 // Event listener for the "Verify Word" button
 checkBtn.addEventListener("click", () => {
-    let userWord = inputField.value.trim().toLowerCase(); // Trim and convert to lowercase
-    if (!userWord) return alert("Please enter the word to check!");
-
-    if (userWord === correctWord) {
-        score++; // Increment the score when the word is correct
-    } else {
-        score--; // Decrement the score when the word is incorrect
+    let userWord = inputField.value.toLowerCase();
+    inputField.value = ""; 
+    if (!userWord) {
+        alert("Please enter the word to check!");
+        return;
     }
-
-    scoreCounter.innerText = score;
-
-    // Clear the user input
-    inputField.value = "";
-
-    generateWord();
+    if (userWord === correctWord) {
+        score++;
+        scoreCounter.innerText = score;
+        alert("Correct answer!");
+    } else {
+        score--;
+        scoreCounter.innerText = score;
+        alert("Oops! Incorrect answer.");
+    }
+    generateWord(); // Generate a new word
 });
 
+// Event listener for the "Game Instructions" button
+instructionsBtn.addEventListener("click", () => {
+    modal.style.display = "block";
+});
+
+// Event listener for the close button in the modal
+closeBtn.addEventListener("click", () => {
+    modal.style.display = "none";
+});
+
+// Event listener to close the modal if the user clicks outside of it
+window.addEventListener("click", (event) => {
+    if (event.target === modal) {
+        modal.style.display = "none";
+    }
+});
