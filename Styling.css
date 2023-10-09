@@ -142,6 +142,23 @@ body {
     align-items: center;
 }
 
+/* Score Counter Styling */
+.score {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background-color: #5372F0;
+    color: white;
+    padding: 5px 10px;
+    border-radius: 5px;
+    font-size: 1.2em;
+    font-weight: bold;
+}
+
+#score-counter {
+    margin-left: 5px;
+}
+
 /* Media Query for Smaller Screens */
 @media screen and (max-width: 470px) {
     .container h2 {
