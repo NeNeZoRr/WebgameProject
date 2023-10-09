@@ -27,7 +27,9 @@ const wordArray = [
     { word: "Rosetta Stone", hint: "A stone inscribed with the same text in three scripts, including hieroglyphics, which helped scholars decipher ancient Egyptian writing." },
     { word: "Nubia", hint: "A region to the south of Egypt, known for its interactions and conflicts with the Egyptian civilization." },
     { word: "Abydos", hint: "An ancient Egyptian city and burial site, considered a sacred place associated with Osiris, the god of the afterlife." },
+    //check 
     { word: "Ma'at", hint: "The ancient Egyptian concept of truth, balance, and order, often personified as a goddess." },
+    //
     { word: "Cobra", hint: "A venomous snake often associated with protection and the Egyptian goddess Wadjet." },
     { word: "Scarab Beetle", hint: "A type of beetle revered in ancient Egypt as a symbol of rebirth and transformation." },
     { word: "Karnak Temple", hint: "A vast temple complex in Luxor, Egypt, dedicated to the god Amun-Ra and known for its impressive columns and statues." },
