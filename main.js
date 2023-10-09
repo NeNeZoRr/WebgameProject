@@ -62,7 +62,7 @@ const updateGameTimerDisplay = remainingTime => {
 const initGame = () => {
     wordText.innerText = "";
     hintText.innerText = "";
-    inputField.value = ""; // Clear the input field
+    inputField.value = ""; 
     gameStarted = false;
     score = 0;
     scoreCounter.innerText = score;
@@ -73,7 +73,7 @@ const initGame = () => {
 refreshBtn.addEventListener("click", () => {
     inputField.value = ""; 
     initGame();
-    generateWord(); // Generate a new word
+    generateWord();
     initGameTimer(180); 
     gameStarted = true;
 });
@@ -95,7 +95,7 @@ checkBtn.addEventListener("click", () => {
         scoreCounter.innerText = score;
         alert("Oops! Incorrect answer.");
     }
-    generateWord(); // Generate a new word
+    generateWord();
 });
 
 // Event listener for the "Game Instructions" button
