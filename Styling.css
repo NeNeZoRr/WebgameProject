@@ -7,6 +7,7 @@
     font-family: 'Audiowide';
 }
 
+/* Body */
 body {
     display: flex;
     flex-direction: column;
@@ -157,6 +158,71 @@ body {
     margin-left: 5px;
 }
 
+/* Modal Styles */
+.modal {
+    display: none;
+    font-family: 'Audiowide';
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.7);
+}
+
+.modal-content {
+    background-color: #fefefe;
+    margin: 10% auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 80%;
+    border-radius: 10px;
+}
+
+.close-btn {
+    color: #888;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.close-btn:hover,
+.close-btn:focus {
+    color: #000;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+/* Game Instructions Button */
+.instructions-btn {
+    position: absolute;
+    font-family: 'Audiowide';
+    top: 10px;
+    left: 10px;
+    background-color: #5372F0;
+    color: white;
+    padding: 10px 20px;
+    border-radius: 5px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.instructions-btn:hover {
+    background-color: #2c52ed;
+}
+
+/* Game Instructions */
+.instructions {
+    align-items: center;
+    text-align: center;
+    font-size: 1.5em;
+    margin-top: auto;
+    padding: auto;
+}
+
 /* Media Query for Smaller Screens */
 @media screen and (max-width: 470px) {
     .container h2 {
@@ -193,5 +259,12 @@ body {
     #timer {
         font-size: 1.25em;
         margin-top: 0.5em;
+    }
+    .modal-content {
+        width: 95%;
+    }
+
+    .instructions {
+        font-size: 1em;
     }
 }
