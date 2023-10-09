@@ -17,6 +17,7 @@ body {
     margin: 0;
 }
 
+/* Container */
 .container {
     width: 90%;
     max-width: 800px;
@@ -53,6 +54,7 @@ body {
     text-transform: uppercase;
 }
 
+/* Details */
 .content .details {
     margin: 1.5em 0 1.25em;
 }
@@ -88,6 +90,7 @@ body {
     color: #bfbfbf;
 }
 
+/* Buttons */
 .content .buttons {
     display: flex;
     margin-top: 1.25em;
@@ -147,9 +150,9 @@ body {
     position: absolute;
     top: 10px;
     right: 10px;
-    background-color: #5372F0;
-    color: white;
-    padding: 5px 10px;
+    background-color: rgb(204, 202, 202);
+    color: #000000;
+    padding: 10px 50px;
     border-radius: 5px;
     font-size: 1.2em;
     font-weight: bold;
