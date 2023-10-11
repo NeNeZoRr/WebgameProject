@@ -1,7 +1,6 @@
-// wordArray from word.js
 import wordArray from './word.js';
 
-// DOM elements
+ // Dom Tree
 const wordText = document.querySelector(".word");
 const hintText = document.querySelector(".hint span");
 const gameTimerDisplay = document.getElementById("game-timer");
@@ -12,12 +11,12 @@ const scoreCounter = document.getElementById("score-counter");
 const instructionsBtn = document.querySelector(".instructions-btn");
 const modal = document.querySelector(".modal");
 const closeBtn = document.querySelector(".close-btn");
+const messageDisplay = document.querySelector(".message-display");
+const resetButton = document.getElementById("reset-button");
 
-// Game Initialization variables
 let correctWord, gameTimer, gameStarted = false;
 let score = 0;
 
-// Function to generate a new word
 const generateWord = () => {
     let randomObj = wordArray[Math.floor(Math.random() * wordArray.length)];
     let wordArrayShuffled = randomObj.word.split("");
@@ -30,7 +29,35 @@ const generateWord = () => {
     correctWord = randomObj.word.toLowerCase();
 };
 
-// Timer function and score function
+let timeRemaining = 180;
+
+const resetGame = () => {
+    clearInterval(gameTimer);
+    timeRemaining = 180;
+    updateGameTimerDisplay(timeRemaining);
+    gameStarted = false;
+    score = 0;
+    scoreCounter.innerText = "0";
+};
+
+const startGame = () => {
+    resetGame();
+    generateWord();
+    initGameTimer(timeRemaining);
+};
+
+refreshBtn.addEventListener("click", () => {
+    inputField.value = "";
+    if (!gameStarted) {
+        startGame();
+    }
+});
+
+resetButton.addEventListener("click", () => {
+    resetGame();
+    initGame();
+});
+
 const initGameTimer = maxTime => {
     clearInterval(gameTimer);
     gameTimerDisplay.style.display = "block";
@@ -41,16 +68,15 @@ const initGameTimer = maxTime => {
         } else {
             clearInterval(gameTimer);
             if (score >= 15) {
-                alert("Winner!");
+                showMessage("Winner!");
             } else {
-                alert("Game over");
+                showMessage("Game over");
             }
             initGame();
         }
     }, 1000);
 };
 
-// Timer display function
 const updateGameTimerDisplay = remainingTime => {
     const minutes = Math.floor(remainingTime / 60);
     const seconds = remainingTime % 60;
@@ -58,59 +84,52 @@ const updateGameTimerDisplay = remainingTime => {
     gameTimerDisplay.innerText = formattedTime;
 };
 
-// Function to initialize the game and score
 const initGame = () => {
     wordText.innerText = "";
     hintText.innerText = "";
-    inputField.value = ""; 
+    inputField.value = "";
     gameStarted = false;
-    score = 0;
-    scoreCounter.innerText = score;
-    gameTimerDisplay.style.display = "none"; 
+    gameTimerDisplay.style.display = "none";
+    messageDisplay.style.display = "none"; 
 };
 
-// Event listener for the "New Word" button
-refreshBtn.addEventListener("click", () => {
-    inputField.value = ""; 
-    initGame();
-    generateWord();
-    initGameTimer(180); 
-    gameStarted = true;
-});
-
-// Event listener for the "Verify Word" button
 checkBtn.addEventListener("click", () => {
     let userWord = inputField.value.toLowerCase();
-    inputField.value = ""; 
+    inputField.value = "";
     if (!userWord) {
-        alert("Please enter the word to check!");
+        showMessage("Please enter the word to check!");
         return;
     }
     if (userWord === correctWord) {
         score++;
         scoreCounter.innerText = score;
-        alert("Correct answer!");
+        showMessage("Correct answer! +1 point");
     } else {
         score--;
         scoreCounter.innerText = score;
-        alert("Oops! Incorrect answer.");
+        showMessage("Incorrect answer. The correct word is: " + correctWord + " -1 point");
     }
     generateWord();
 });
 
-// Event listener for the "Game Instructions" button
 instructionsBtn.addEventListener("click", () => {
     modal.style.display = "block";
 });
 
-// Event listener for the close button in the instruction pop up
 closeBtn.addEventListener("click", () => {
     modal.style.display = "none";
 });
 
-// Event listener to close the instructions tab if the user clicks outside of it
-window.addEventListener("click", (event) => {
+window.addEventListener("click", event => {
     if (event.target === modal) {
         modal.style.display = "none";
     }
 });
+
+const showMessage = message => {
+    messageDisplay.innerText = message;
+    messageDisplay.style.display = "block";
+    setTimeout(() => {
+        messageDisplay.style.display = "none";
+    }, 2000);
+};
