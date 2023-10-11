@@ -1,6 +1,6 @@
 import wordArray from './word.js';
 
- // Dom Tree
+// Dom Tree
 const wordText = document.querySelector(".word");
 const hintText = document.querySelector(".hint span");
 const gameTimerDisplay = document.getElementById("game-timer");
@@ -17,6 +17,7 @@ const resetButton = document.getElementById("reset-button");
 let correctWord, gameTimer, gameStarted = false;
 let score = 0;
 
+//Word Generate
 const generateWord = () => {
     let randomObj = wordArray[Math.floor(Math.random() * wordArray.length)];
     let wordArrayShuffled = randomObj.word.split("");
@@ -46,6 +47,7 @@ const startGame = () => {
     initGameTimer(timeRemaining);
 };
 
+//Event Listner Refresh//
 refreshBtn.addEventListener("click", () => {
     inputField.value = "";
     if (!gameStarted) {
@@ -57,7 +59,7 @@ resetButton.addEventListener("click", () => {
     resetGame();
     initGame();
 });
-
+// Timer //
 const initGameTimer = maxTime => {
     clearInterval(gameTimer);
     gameTimerDisplay.style.display = "block";
@@ -84,15 +86,17 @@ const updateGameTimerDisplay = remainingTime => {
     gameTimerDisplay.innerText = formattedTime;
 };
 
+//Game Intilization// 
 const initGame = () => {
     wordText.innerText = "";
     hintText.innerText = "";
     inputField.value = "";
     gameStarted = false;
     gameTimerDisplay.style.display = "none";
-    messageDisplay.style.display = "none"; 
+    messageDisplay.style.display = "none";
 };
 
+//Score Tracker//
 checkBtn.addEventListener("click", () => {
     let userWord = inputField.value.toLowerCase();
     inputField.value = "";
@@ -112,6 +116,7 @@ checkBtn.addEventListener("click", () => {
     generateWord();
 });
 
+//Event Listner// 
 instructionsBtn.addEventListener("click", () => {
     modal.style.display = "block";
 });
@@ -126,6 +131,7 @@ window.addEventListener("click", event => {
     }
 });
 
+//Message Display//
 const showMessage = message => {
     messageDisplay.innerText = message;
     messageDisplay.style.display = "block";
